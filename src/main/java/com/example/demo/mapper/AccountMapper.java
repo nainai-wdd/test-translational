@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
  * @author nainai
  */
 @Mapper
-public interface TestMapper extends BaseMapper<Test> {
+public interface AccountMapper extends BaseMapper<Account> {
 
-    int addMoney(@Param("money") int money, @Param("id") int id);
+    int addMoney(@Param("money") Long money, @Param("id") Long id);
 }

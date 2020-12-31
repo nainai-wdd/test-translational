@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.demo.mapper.TestMapper">
+<mapper namespace="com.example.demo.mapper.AccountMapper">
 
     <update id="addMoney">
-        update test.test set money = money + #{money} where id = #{id}
+        update account set money = money + #{money} where id = #{id}
     </update>
 </mapper>

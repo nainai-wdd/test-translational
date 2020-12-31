@@ -8,12 +8,12 @@ import lombok.Data;
 /**
  * @author nainai
  */
-@TableName("test")
+@TableName("account")
 @Data
-public class Test {
+public class Account {
 
     @TableId
-    private Integer id;
+    private Long id;
 
     @TableField("money")
     private Long money;
