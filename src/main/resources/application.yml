@@ -4,7 +4,7 @@ spring:
 #    数据库配置
     url: jdbc:mysql://localhost:3306/test
     username: root
-    password: root123.ROOT
+    password: root
 
     #hikari数据库连接池
     hikari:
