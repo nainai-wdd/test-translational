@@ -35,8 +35,12 @@ class DemoApplicationTests {
         System.out.println("测试写并发中写覆盖问题，总线程数：" + times);
 
         System.out.println("============================");
-        System.out.println("开始测试ForUpdate模式：");
-        testTransnational(runnableComponent::runForUpdate);
+        System.out.println("开始测试错误示范模式：");
+        testTransnational(runnableComponent::run5Exception);
+
+        System.out.println("============================");
+        System.out.println("开始测试Serializable模式：");
+        testTransnational(runnableComponent::runSerializable);
 
         System.out.println("============================");
         System.out.println("开始测试SQL模式：");
@@ -47,12 +51,13 @@ class DemoApplicationTests {
         testTransnational(runnableComponent::runCAS);
 
         System.out.println("============================");
-        System.out.println("开始测试Serializable模式：");
-        testTransnational(runnableComponent::runSerializable);
+        System.out.println("开始测试ForUpdate模式：");
+        testTransnational(runnableComponent::runForUpdate);
 
-        System.out.println("============================");
-        System.out.println("开始测试错误示范模式：");
-        testTransnational(runnableComponent::run5Exception);
+
+
+
+
     }
 
 
@@ -93,7 +98,9 @@ class DemoApplicationTests {
 
     private void finalAssert() {
         //断言最终状态
-        assert runnableComponent.result();
+        boolean result = runnableComponent.result();
+        //断言
+//        assert result
         //清理状态
 //        initDate();
     }
