@@ -164,7 +164,7 @@ public class RunnableComponent{
      * 缺点：1。需要手动写重试逻辑
      *      2。高并发下难以命中正确的修改，执行效率低下，且随着并发量的增加而大量下降，低命中率的重试导致数据库资源被浪费
      *      3。复杂业务逻辑下需要数据库增加version字段，
-     *      4。因复杂的逻辑中有回滚需求加入事务时，只能使用读已提交才能使用cas
+     *      4。因复杂的逻辑中有回滚需求加入事务时，只能使用读已提交才能使用cas，（开启事务时不推荐使用cas）
      */
     public void runCAS(){
         // 准备
@@ -192,7 +192,7 @@ public class RunnableComponent{
      * 优点：1。通过给读取的数据加上排他锁，保证数据一致性
      *      2。锁家在单条数据上，对其他不设计此条信息的读操作不造成影响
      *      3。效率较高，在各个并发量下有稳定的性能
-     * 缺点：1。必须手动在读操作时加锁，需要枷锁的内容由程序原决定，在复杂业务中需要人为确认哪些读操作要加锁
+     * 缺点：1。必须手动在读操作时加锁，需要枷锁的内容由程序员决定，在复杂业务中需要人为确认哪些读操作要加锁
      */
     @Transactional(rollbackFor = Exception.class, isolation = Isolation.REPEATABLE_READ)
     public void runForUpdate(){
